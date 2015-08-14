@@ -1,19 +1,5 @@
-/* Copyright 2015 Samsung Electronics Co., LTD
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- *     http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
- */
 
-package org.gearvrf.keyboard.util;
+package org.gearvrf.controls.util;
 
 /* Copyright 2015 Samsung Electronics Co., LTD
  *
@@ -39,10 +25,6 @@ import android.graphics.Paint.Style;
 import android.graphics.Rect;
 import android.graphics.Typeface;
 
-import org.gearvrf.keyboard.textField.Text;
-
-import java.util.ArrayList;
-
 /**
  * A class which creates Bitmaps with texts on them.
  *
@@ -51,7 +33,6 @@ import java.util.ArrayList;
 public class GVRTextBitmapFactory {
 
     public static boolean cacheOn = true;
-    ArrayList<GVRTextBitmapFactory> cache = new ArrayList<>();
 
     private GVRTextBitmapFactory() {
     }
@@ -81,7 +62,7 @@ public class GVRTextBitmapFactory {
         paint.setTextAlign(textAlign);
         paint.setFakeBoldText(true);
         paint.setColor(textColor);
-        
+
         canvas.drawColor(backgroundColor);
         canvas.drawText(character, width / 2, height / 1.6f, paint);
 
@@ -116,8 +97,7 @@ public class GVRTextBitmapFactory {
 
     public static Bitmap create(Context context, float width, float height, Text text, int test) { // spinner
 
-        Typeface myTypeface = Typeface.createFromAsset(context.getAssets(),
-                "fonts/futura-condensed-normal.ttf");
+        Typeface myTypeface = Typeface.createFromAsset(context.getAssets(), "fonts/futura-condensed-normal.ttf");
 
         Bitmap bitmap = Bitmap.createBitmap((int) width, (int) height, Bitmap.Config.ARGB_8888);
 
@@ -137,8 +117,7 @@ public class GVRTextBitmapFactory {
 
         canvas.drawColor(text.backgroundColor);
 
-        canvas.drawText(text.text, width / 2 - rectText.exactCenterX(),
-                height / 2 - rectText.exactCenterY(), paint);
+        canvas.drawText(text.text, width / 2 - rectText.exactCenterX(), height / 2 - rectText.exactCenterY(), paint);
 
         return bitmap;
     }
